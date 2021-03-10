@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue练习之计算属性</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="myApp">
+       <!-- <p> 我的出生年份是：{{birthDate}}</p> -->
+       <p>我的出生年份是：<input type="text" v-model="birthDate"></p>
+        <hr>
+        <p>
+            我的年龄是：{{pingfang}}岁
+        </p>
+        <hr>
+        <p>
+            我的属相是：{{shuxiang}}
+        </p>
+
+
+    </div>
+    <script>
+        var myApp=new Vue({
+            el:'#myApp',
+            data:{
+                message:'Hello Vue!',
+                birthDate:1986,
+                shu:'',
+            },
+            computed:{//根据出生年份计算年龄
+                pingfang:function(){
+                    var date=new Date;
+                    var nowYear=date.getFullYear();
+                    return nowYear-(this.birthDate);
+                },
+                shuxiang:function(){
+                    var shuxiangs = [ "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪" ];
+                    var start=1900;
+                    return shuxiangs[(this.birthDate-start)%shuxiangs.length]
+                }
+            }
+        })
+    </script>
+</body>
+</html>
