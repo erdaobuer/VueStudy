@@ -1,0 +1,38 @@
+<!-- 
+  @Author: Your name
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-11 16:47:29
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之列表渲染</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp">
+     <ul>
+         <li v-for="(book,index) in books">{{index+1}}.      书名：{{book.name}}，作者：{{book.Author}}</li>
+     </ul>
+    </div>
+    <script>
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {
+          books:[
+              {name:"平凡的世界",Author:"路遥"},
+              {name:"活着",Author:"余华"},
+              {name:"白鹿原",Author:"陈忠实"},
+              {name:"秦腔",Author:"贾平凹"},
+          ]
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!-- 
+  @Author: Your name
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-11 18:04:28
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之表单控件绑定v-model</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp">
+        <h1>表单控件绑定 v-model</h1>
+        <h4>解释：为表单控件元素创建双向数据绑定（将JS变量的值快速设定到控件上，然后将用户输入的内容快速设置回JS变量）</h4>
+        <input id="txtName" v-model="message" placeholder="来啊，编辑我吧！">
+        <p>我爱你，<span :class="{spanColor:true}">{{message}}</span></p>
+    </div>
+    <script>
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {
+            message:"China"
+        }
+      });
+    </script>
+    
+  </body>
+</html>

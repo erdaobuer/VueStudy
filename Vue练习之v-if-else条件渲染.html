@@ -1,0 +1,40 @@
+<!-- 
+  @Author: Your name
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-11 15:48:12
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之v-if-else条件渲染</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp">
+      <h1 v-if="result==0">{{result}}分 - 成绩未公布</h1>
+      <h1 v-else-if="result<60">{{result}}分 - 考试不及格</h1>
+      <h1 v-else-if="result<80">{{result}}分 - 还需努力</h1>
+      <h1 v-else>{{result}}分 - 考得不错，💪💪💪</h1>
+      <button @click="btnClick">考试成绩</button>
+    </div>
+    <script>
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {
+          result: 0,
+        },
+        methods: {
+          btnClick: function () {
+            this.result=Math.round(Math.random()*100);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

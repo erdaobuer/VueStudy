@@ -1,0 +1,48 @@
+<!-- 
+  @Author: Your name
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-11 17:40:13
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之事件处理器</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp">
+        <h1>事件处理器</h1>
+        <input id="txtName" v-on:keyup="txtKeyup($event)">
+        <button id="btnOK" @click="btnClick($event)">OK</button>
+    </div>
+    <script>
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {},
+        methods:{
+            txtKeyup:function(event){//鼠标按下事件
+                this.debugLog(event);
+            },
+            btnClick:function(event){//点击事件
+                this.debugLog(event);
+            },
+            debugLog:function(event){
+                console.log(
+                    event.srcElement.tagName,
+                    event.srcElement.id,
+                    event.srcElement.innerHTML,
+                    event.key?event.key:""
+                )
+            }
+        }
+      });
+    </script>
+    
+  </body>
+</html>

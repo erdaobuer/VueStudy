@@ -1,0 +1,37 @@
+<!-- 
+  @Author: Your name
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-11 17:26:59
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之JS对象迭代</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp">
+        <h1>JS对象迭代</h1>
+        <div v-for="(value,key) in mybook">{{key}}:{{value}}</div><!--先写value再写key-->
+    </div>
+    <script>
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {
+          mybook:{//定义一个对象
+              name:"平凡的世界",
+              author:"路遥",
+              price:100
+          }
+        }
+      });
+    </script>
+    
+  </body>
+</html>

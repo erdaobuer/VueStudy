@@ -1,0 +1,28 @@
+/*
+ * @Author: Your name
+ * @Date:   2021-03-11 15:09:45
+ * @Last Modified by:   Your name
+ * @Last Modified time: 2021-03-11 18:01:51
+ */
+body{
+    font-size: 24px;
+}
+.active{
+    color:blue;
+}
+.big{
+    font-size: 45px;
+    color: hotpink;
+    border: lightseagreen;
+}
+
+body h1{
+    color: mediumslateblue;
+}
+ul{
+    list-style: none;
+}
+.spanColor{
+    font-size: x-large;
+    color:indianred
+}
