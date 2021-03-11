@@ -1,0 +1,61 @@
+<!-- 
+  @Author: Tate
+  @Date:   2021-03-10 10:52:29
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-10 14:54:25
+-->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js学习</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="myApp" v-if="status">
+        {{message}}<br/>
+        {{message10}}<br/>
+        <h2> {{documentTitle}}</h2>
+        <ul>
+            <li v-for="stu in students">姓名：{{stu.name}},年龄：{{stu.age}}</li>
+        </ul>
+        <p>我的名字是:{{myname}}</p>
+        <!-- <input type="text" v-model="myname"> -->
+        <button v-on:click="btnClick('赵六')">赵六</button>
+        <button v-on:click="btnClick('张三')">张三</button>
+        <button v-on:click="btnClick('李四')">李四</button>
+        <button @click="btnClick('王五')">王五</button> <!--@click等同于v-on:click -->
+    </div>
+    <script>
+        var myApp=new Vue({
+            el:'#myApp',
+            data:{
+                message:'Hello Vue.js World!',
+                message10:'My Name is Tate',
+                documentTitle:'学生列表',
+                status:true,
+                students:[
+                    {name:'张三',age:23},
+                    {name:'李四',age:24},
+                    {name:'王五',age:21},
+                    {name:'赵六',age:23}
+                ],
+                myname:'王五',//页面加载时的默认值
+                
+            },
+            methods:{
+                    btnClick:function(stuname){
+                        // if(this.students.indexOf(stuname)){
+                        //     alert('存在');
+                        // }else{
+                        //     alert('不存在');
+                        // }
+                        this.myname=stuname;
+                    }
+                }
+        })
+    </script>
+</body>
+</html>

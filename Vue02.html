@@ -1,0 +1,43 @@
+<!-- 
+  @Author: Your name
+  @Date:   2021-03-10 16:00:37
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-10 16:16:48
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue02</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id=myApp>
+        <ul>
+            <stu-item v-for="item in students" v-bind:student="item"></stu-item>
+        </ul>
+    </div>
+    <script>
+        // 定义组件,stu-item是组件的名称，student是组件的属性，template是组件中要显示的html代码
+        Vue.component('stu-item',{
+            props:['student'],//组件属性
+            template:'<li style="color:green"><h2>{{student.name}}<h2/></li>'
+        });
+
+        //Vue对象实例化
+        var myApp =new Vue({
+            el:'#myApp',
+            data:{
+                students:[
+                    {name:'吴越'},
+                    {name:'张武'},
+                    {name:'刘魁'},
+                    {name:'赵梅'}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
