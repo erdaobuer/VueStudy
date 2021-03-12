@@ -1,0 +1,51 @@
+<!-- 
+  @Author: Your name
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-12 16:41:15
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之表单复选框Checkbox</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp">
+      <h1>表单控件之复选框Checkbox</h1>
+      <input
+        type="checkbox"
+        id="平凡的世界"
+        value="平凡的世界"
+        v-model="checkedBooks"
+      />
+      <label for="平凡的世界">平凡的世界</label>
+      <input type="checkbox" id="活着" value="活着" v-model="checkedBooks" />
+      <label for="活着">活着</label>
+      <input type="checkbox" id="秦腔" value="秦腔" v-model="checkedBooks" />
+      <label for="秦腔">秦腔</label>
+      <br />
+      <p>
+        请选择您喜欢的数据：<span :class="bookNameClass">{{checkedBooks}}</span>
+      </p>
+    </div>
+    <script>
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {
+          message: "China",
+          checkedBooks: [],
+          bookNameClass: {
+            fontColor: true,
+            fontStyle:true
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

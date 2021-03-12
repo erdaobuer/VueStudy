@@ -1,0 +1,57 @@
+<!-- 
+  @Author: Your name
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-12 17:06:43
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之表单控件之单选按钮radio</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp">
+      <h1>表单控件之单选按钮radio</h1>
+
+      <h3>选择性别:</h3>
+      <input type="radio" id="male" value="男" v-model="pickedSex"/>
+      <label for="male">男</label>
+      <input type="radio" id="female" value="女" v-model="pickedSex"/>
+      <label for="female">女</label>
+      <br />
+
+      <h3>您的爱好：</h3>
+      <input type="checkbox" id="game" value="玩游戏" v-model=pickedHobby>
+      <label for="game">玩游戏</label>
+      <input type="checkbox" id="sing" value="唱歌" v-model=pickedHobby>
+      <label for="sing">唱歌</label>
+      <input type="checkbox" id="movie" value="看电影" v-model=pickedHobby>
+      <label for="movie">看电影</label>
+      <p>
+        您的性别是：<span :class="bookNameClass">{{pickedSex}}</span>
+        <br>
+        您的爱好是：<span :class="{bookNameClass:false}">{{pickedHobby}}</span>
+      </p>
+    </div>
+    <script>
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {
+          message: "China",
+          pickedSex: "",
+          pickedHobby:[],
+          bookNameClass: {
+            fontColor: true,
+            fontStyle:true
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

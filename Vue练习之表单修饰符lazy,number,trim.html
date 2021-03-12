@@ -1,0 +1,55 @@
+<!-- 
+  @Author: Tate
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-12 18:04:49
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之表单修饰符lazy,number,trim</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp">
+      <!-- <input type="text" v-model="name" /> -->
+      <label for="">姓名：</label>
+      <input type="text" v-model.lazy="name" @change="checkusername"/><!--控件失去焦点才更新数据 -->
+      <span v-if="checkusernameOK">可注册</span>
+      <br />
+      <label for="">年龄：</label>
+      <!-- <input type="number" v-model="age" /> -->
+      <input type="number" v-model.number="age" />
+      <br />
+      <p>
+        <textarea v-model.lazy.trim="like" cols="55" rows="8"></textarea>
+      </p>
+      <p>你的名字是:{{name}}</p>
+      <p>你的年龄是:{{age}}</p>
+      <p>你的爱好是:{{like}}</p>
+    </div>
+    <script>
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {
+            name: "Tate",
+            age:34,
+            like:"",
+            checkusernameOK:false
+        },
+        methods:{
+            checkusername:function(){
+                if(this.name.length>0)
+                this.checkusernameOK=true;
+                else this.checkusernameOK=false
+            }
+        }
+      });
+    </script>
+  </body>
+</html>

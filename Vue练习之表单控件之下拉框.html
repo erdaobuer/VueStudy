@@ -1,0 +1,65 @@
+<!-- 
+  @Author: Your name
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-12 17:20:08
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之表单控件之下拉框</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp">
+      <h1>表单控件之下拉框</h1>
+      <p>
+        <h3>选择你最喜欢的NBA球星:</h3>
+        <select v-model="likedNBAStar" style="width: 210px">
+          <option value="科比">科比</option>
+          <option value="麦迪">麦迪</option>
+          <option value="邓肯">邓肯</option>
+          <option value="吉诺比利">吉诺比利</option>
+          <option value="帕克">帕克</option>
+        </select>
+      </p>
+      <p>
+        <h3>选择你的全明星阵容:</h3>
+        <select v-model="likedNBAStars" multiple style="width: 210px;height: 210px;">
+          <option value="科比">科比</option>
+          <option value="麦迪">麦迪</option>
+          <option value="邓肯">邓肯</option>
+          <option value="吉诺比利">吉诺比利</option>
+          <option value="帕克">帕克</option>
+          <option value="奥尼尔">奥尼尔</option>
+          <option value="保罗">保罗</option>
+          <option value="德罗赞">德罗赞</option>
+        </select>
+      </p>
+      <p>
+          <h3>选择结果</h3>
+          你最喜欢的NBA球星是：<span :class="myClass">{{likedNBAStar}}</span>
+          <br><br>
+          你的全明星阵容是：<span :class="myClass">{{likedNBAStars}}</span>
+      </p>
+    </div>
+    <script>
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {
+            likedNBAStar:"",
+            likedNBAStars:[],
+            myClass:{
+                fontColor:true,
+                fontStyle:true
+            }
+        },
+      });
+    </script>
+  </body>
+</html>
