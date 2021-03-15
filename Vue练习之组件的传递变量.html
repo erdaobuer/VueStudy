@@ -1,0 +1,57 @@
+<!-- 
+  @Author: Tate
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-15 17:45:22
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之组件的传递变量</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp" style="background-color: aquamarine">
+      <h1>组件的数据传递</h1>
+      <input type="text" placeholder="请输入你的名字" v-model="myname">
+      <say-hello :myname="myname"></say-hello>
+      <input type="text" placeholder="请输入您的考试成绩" v-model.lazy.number="myScore">
+      <h2>您的成绩评价</h2>
+      <test-result :score="myScore"></test-result>
+    </div>
+
+    <script>
+      Vue.component("test-result", {
+        props: ["score"],
+        template: "<div><strong>你的成绩是：</strong>{{score}}，<strong>考试评级：</strong>{{testResult}}</div>",
+        computed: {
+          testResult: function () {
+            var strResult = "";
+            if (this.score < 60) strResult = "不及格";
+            else if (this.score < 90) strResult = "中等生";
+            else if (this.score <= 100) strResult = "优秀生";
+            return strResult;
+          },
+        },
+      });
+
+      Vue.component('say-hello',{
+          props:['myname'],
+          template:"<div>你好，<strong>{{myname}}</strong>!</div>"
+      })
+
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {
+            myScore:null,
+            myname:""
+        },
+      });
+    </script>
+  </body>
+</html>

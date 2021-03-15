@@ -1,0 +1,55 @@
+<!-- 
+  @Author: Tate
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-15 11:38:44
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之组件命名，全局组件和局部组件</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp" style="background-color: aquamarine;">
+      <h1>my组件</h1>
+      <my-Component></my-Component>
+      <part-component></part-component><!--局部组件-->
+    </div>
+    <div id="youApp" style="background-color:bisque">
+        <h1>you组件</h1>
+        <my-Component></my-Component>
+        <part-Component></part-Component>
+      </div>
+    <script>
+      //组件声明写在app声明之前才可以生效
+      //组件名不能包含大写字母
+      //全局组件，只要用到Vue对象的地方都可以使用该组件
+      Vue.component("myComponent", {
+        template: "<div><h4>这是自定义的组件</h4></div>",
+      });
+
+      //js代码定义了一个模板
+      var partComponent={
+          template:'<div><h6 style="color:darkblue">局部组件</h6></div>'
+      }
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {},
+        components:{
+            'partComponent':partComponent
+        }
+
+      });
+      var youApp =new Vue({
+          el:'#youApp',
+          data:{}
+      })
+    </script>
+  </body>
+</html>

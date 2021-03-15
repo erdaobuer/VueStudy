@@ -1,0 +1,49 @@
+<!-- 
+  @Author: Tate
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-15 17:31:59
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之组件的传递数据</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp" style="background-color: aquamarine">
+      <h1>组件的数据传递</h1>
+      <h2>您的成绩评价</h2>
+      <test-result :score="50"></test-result>
+      <test-result :score="70"></test-result>
+      <test-result :score="96"></test-result>
+    </div>
+
+    <script>
+      Vue.component("test-result", {
+        props: ["score"],
+        template: "<div>你的成绩是：{{score}}，考试评级：{{testResult}}</div>",
+        computed: {
+          testResult: function () {
+            var strResult = "";
+            if (this.score < 60) strResult = "不及格";
+            else if (this.score < 90) strResult = "中等生";
+            else if (this.score <= 100) strResult = "优秀生";
+            return strResult;
+          },
+        },
+      });
+
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {
+        },
+      });
+    </script>
+  </body>
+</html>

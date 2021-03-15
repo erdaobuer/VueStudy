@@ -1,0 +1,52 @@
+<!-- 
+  @Author: Tate
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-15 11:47:40
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之表行组件</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp" style="background-color: aquamarine">
+      <h1>手机品牌</h1>
+      <table border="1">
+        <tr>
+          <td>编号</td>
+          <td>手机品牌</td>
+        </tr>
+        <tr is="my-row1"></tr>
+        <tr is="my-row2"></tr>
+        <tr is="my-row3"></tr>
+        <tr is="my-row4"></tr>
+      </table>
+    </div>
+
+    <script>
+      Vue.component("my-row1", {
+        template: "<tr><td>(1)</td><td>华为手机</td></tr>",
+      });
+      Vue.component("my-row2", {
+        template: "<tr><td>(2)</td><td>苹果手机</td></tr>",
+      });
+      Vue.component("my-row3", {
+        template: "<tr><td>(3)</td><td>诺基亚手机</td></tr>",
+      }); Vue.component("my-row4", {
+        template: "<tr><td>(4)</td><td>OPPO手机</td></tr>",
+      });
+
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {},
+      });
+    </script>
+  </body>
+</html>

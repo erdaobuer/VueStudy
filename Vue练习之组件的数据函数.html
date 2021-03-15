@@ -1,0 +1,42 @@
+<!-- 
+  @Author: Tate
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-15 17:32:15
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之组件的数据函数</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp" style="background-color: aquamarine">
+      <h1>组件的数据函数</h1>
+      当前时间是：<mycomponent style="color: darkgoldenrod"></mycomponent>
+    </div>
+
+    <script>
+      Vue.component("mycomponent", {
+        template: "<strong>{{nowDate}}</strong>",
+        data: function () {
+          var date = new Date();
+          return {
+            nowDate:
+              date.toLocaleDateString() + " " + date.toLocaleTimeString(),
+          };
+        },
+      });
+
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {},
+      });
+    </script>
+  </body>
+</html>
