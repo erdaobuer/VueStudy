@@ -2,7 +2,7 @@
  * @Author: Your name
  * @Date:   2021-03-11 15:09:45
  * @Last Modified by:   Your name
- * @Last Modified time: 2021-03-12 16:43:16
+ * @Last Modified time: 2021-03-16 15:26:12
  */
 body{
     font-size: 24px;
@@ -32,4 +32,8 @@ ul{
 .fontStyle{
     font-size: 25px;
     font-weight: bold;
+}
+div{
+    background-color: palegreen;
+    width: 500px;
 }

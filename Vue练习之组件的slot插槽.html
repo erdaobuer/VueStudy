@@ -1,0 +1,47 @@
+<!-- 
+  @Author: Tate
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-16 18:02:07
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之组件的slot插槽</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp">
+        <say-to pname="小明">你来了</say-to>
+        <say-to pname="小张">你也来了</say-to>
+        <say-to pname="小刘">你也一起来了</say-to>
+    </div>
+
+    <script>
+      Vue.component("say-to", {
+        props:['pname'],
+        template:'<div>'
+            +'你好，<strong>{{pname}}</strong>!'
+            +'<slot></slot>'
+            +'</div>'
+      });
+
+      //   var myApp = new Vue({
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {
+            
+        },
+        methods: {
+        
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!-- 
+  @Author: Tate
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-16 11:34:54
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之组件的参数验证</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp">
+     <show-member-info name="Tate" :age=35 :detail="{address:'陕西西安',language:'Chinese'}"></show-member-info>
+
+    </div>
+
+
+
+    <script>
+      Vue.component('show-member-info',{
+          props:{
+              name:{
+                  type:String,
+                  required:true
+              },
+              age:{
+                  type:Number,
+                  validator:function(value){
+                      return value>0&&value<130;
+                  }
+              },
+              detail:{
+                  type:Object,
+                  default:function(){
+                      return {
+                          address:'US',
+                          language:'English'
+                      }
+                  }
+              }
+          },
+          template:'<div>姓名：{{this.name}}</br>'
+            +'年龄：{{this.age}}岁</br>'
+            +'地址：{{this.detail.address}}</br>'
+            +'语言：{{this.detail.language}}</br></div>'
+      })
+
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {
+           
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!-- 
+  @Author: Tate
+  @Date:   2021-03-11 15:08:54
+  @Last Modified by:   Your name
+  @Last Modified time: 2021-03-16 16:53:45
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue练习之组件的事件传递</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="myApp">
+      <input type="Number" v-model="a" multiple="请输入0-100的整数" />
+      <input type="Number" v-model="b" multiple="请输入0-100的整数" />
+      <add-method :a="a" :b="b" v-on:add_event="getAddResult"></add-method>
+      <hr />
+      <h3>和：{{resultPlus}}</h3>
+      <h3>差：{{resultSubtract}}</h3>
+    </div>
+
+    <script>
+      Vue.component("add-method", {
+        props: {
+          a: {
+            type: Number,
+            validator: function (value) {
+              return value > 0 && value < 100;
+            },
+          },
+          b: {
+            type: Number,
+            validator: function (value) {
+              return value > 0 && value < 100;
+            },
+          },
+        },
+        template: '<div><button v-on:click="add">计算</button></div>',
+        methods: {
+          add: function () {
+            this.$emit("add_event", {
+              //add_event:触发的事件；resultPlus，resultSubtract：传递的参数
+              resultPlus: parseInt(this.a) + parseInt(this.b),
+              resultSubtract: parseInt(this.a) - parseInt(this.b),
+            });
+          },
+        },
+      });
+
+      //   var myApp = new Vue({
+      var myApp = new Vue({
+        el: "#myApp",
+        data: {
+          a: 0,
+          b: 0,
+          resultPlus: 0,
+          resultSubtract: 0,
+        },
+        methods: {
+          getAddResult: function (pval) {
+            this.resultPlus = pval.resultPlus;
+            this.resultSubtract = pval.resultSubtract;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
